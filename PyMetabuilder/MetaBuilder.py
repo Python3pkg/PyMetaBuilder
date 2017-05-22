@@ -11,6 +11,7 @@
 from PyMetabuilder.metaUtils import *
 from PyMetabuilder.MetaBuilderMutator import *
 from PyMetabuilder.MetaBuilderCallbacks import *
+import collections
 
 class MetaBuilder(object):
     """
@@ -101,7 +102,7 @@ class MetaBuilder(object):
         self.custom_method_validator(value, methodCall)
 
     def custom_method_validator(self, value, method):
-        if not callable(method):
+        if not isinstance(method, collections.Callable):
             raise TypeError("{0} is not a method or callable one".format(method))
         try:
             if not method(value):

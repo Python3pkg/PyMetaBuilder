@@ -9,6 +9,7 @@
 
 """
 import six
+import collections
 
 def getMethodsByName(p_object, name):
     return [method for method in getMethods(p_object) if name in method]
@@ -27,7 +28,7 @@ def getMethods(obj):
     ret = []
     for e in dir(obj):
         try:
-            if callable(getattr(obj, e)):
+            if isinstance(getattr(obj, e), collections.Callable):
                 ret.append(e)
         except AttributeError:
             pass

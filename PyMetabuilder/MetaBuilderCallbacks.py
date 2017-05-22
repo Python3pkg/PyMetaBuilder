@@ -44,7 +44,7 @@ class MetaBuilderValidator(object):
         calltype = type(validatorArg).__name__
         _name = {'type': lambda arg: arg.__name__, 'instancemethod': lambda arg: "'{0}'".format(arg.__name__),
                  'method': lambda arg: "'{0}'".format(arg.__name__)}
-        if calltype in _name.keys():
+        if calltype in list(_name.keys()):
             return _name[calltype](validatorArg)
         return validatorArg
 
